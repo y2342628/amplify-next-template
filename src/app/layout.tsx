@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.scss";
-import "@aws-amplify/ui-react/styles.css";
+import { Noto_Sans } from "next/font/google";
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
-import Layout from "@/components/Layout";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import CustomLayout from "@/components/CustomLayout";
+
+
+const noto_sans = Noto_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Next APP Demo",
@@ -19,8 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Layout>{children}</Layout>
+      <body className={noto_sans.className}>
+      <AntdRegistry>
+         <CustomLayout>{children}</CustomLayout>
+      </AntdRegistry>
       </body>
     </html>
   );

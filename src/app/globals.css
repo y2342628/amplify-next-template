@@ -1,0 +1,44 @@
+@import "@aws-amplify/ui-react/styles.css";
+
+:root {
+  --font-color:#545454;
+  
+  --root-bg: #f5f5f5;
+   
+  --root-white:#fff;
+
+  --color-primary: #038fdd;
+
+  --sider-bg: #003366;
+}
+
+html,body{
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  color: rgb(var(--font-color));
+  min-height: 100vh;
+  background-color: var(--root-bg);
+  
+
+}
+div[data-amplify-authenticator]{
+  margin-top: 20vh; 
+}
+
+
+.ant-layout-sider-dark {
+  color: #038fdd;
+}
+
+.custom-menu.ant-menu-dark .ant-menu-submenu-open > .ant-menu-submenu-title{
+  color:var(--root-white) ;
+} 
+
+.pointer{
+  cursor: pointer;
+}
+

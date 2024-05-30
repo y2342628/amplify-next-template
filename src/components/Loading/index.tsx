@@ -1,18 +1,17 @@
-import React from 'react';
-import { Spinner } from 'react-bootstrap';
+import React from "react";
 
-const Loading = ({ show, message }:{ show:boolean, message?:string }) => {
-    if (!show) {
-        return null;
-    }
+import { Spin } from "antd";
 
-    return (
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1050 }}>
-            <Spinner animation="border" role="status">
-                <span className="visually-hidden">{message || 'Loading...'}</span>
-            </Spinner>
-        </div>
-    );
+const Loading = ({ show, message }: { show: boolean; message?: string }) => {
+  if (!show) {
+    return null;
+  }
+
+  return (
+    <Spin tip="Loading" size="large" fullscreen>
+      {message || "Loading..."}
+    </Spin>
+  );
 };
 
 export default Loading;
