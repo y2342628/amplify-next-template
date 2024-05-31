@@ -5,11 +5,9 @@ import Image from "next/image";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
-import {Row, Col, Layout, Flex } from "antd";
+import { Row, Col, Layout, Flex } from "antd";
 import Notification from "../Notification";
-import styles from "./index.module.css"
-
-
+import styles from "./index.module.css";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -27,7 +25,7 @@ export default function CustomSider({
 
   return (
     <Sider trigger={null} collapsible collapsed={collapsed} width="280">
-      <Row style={{ height: 72, background: "rgba(0,0,0,0.3)" }} align="middle">
+      <Row style={{ height: 72, background: "rgba(0,0,0,0.3)",overflow:"hidden" }} wrap={false} align="middle">
         <Col flex="50px" style={{ paddingLeft: 20 }}>
           <Flex
             align="center"
@@ -46,21 +44,20 @@ export default function CustomSider({
             )}
           </Flex>
         </Col>
-        <Col flex="auto">
-          <Link href="/">
-            <Image
-              src="/logo.png"
-              alt="Logo"
-              width={150}
-              height={37}
-              priority
-            />
-          </Link>
-        </Col>
+        <Col className="logo-wrap" flex="auto">
+            <Link href="/">
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={150}
+                height={37}
+                priority
+              />
+            </Link>
+          </Col>
       </Row>
       <Notification signOut={signOut} />
-      <div className={styles.menuWrap} >
-
+      <div className={styles.menuWrap}>
         <Nav />
       </div>
     </Sider>

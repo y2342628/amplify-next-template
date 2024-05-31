@@ -36,7 +36,7 @@ export default function CustomLayout({
           theme={{
             token: {
               // Seed Token，影响范围大
-              colorPrimary: "var(--color-primary)",
+              colorPrimary: "#038fdd"
             },
             components: {
               Layout: {
@@ -48,8 +48,8 @@ export default function CustomLayout({
                 darkItemSelectedColor: "#fa8c15",
                 darkItemHoverColor: "#fa8c15",
                 darkItemSelectedBg: "transparent",
-                darkItemColor: "var(--color-primary)",
-                darkGroupTitleColor: "var(--color-primary)",
+                darkItemColor: "var(--custom-color-primary)",
+                darkGroupTitleColor: "var(--custom-color-primary)",
                 subMenuItemBg: "red",
               },
             },
@@ -66,19 +66,7 @@ export default function CustomLayout({
                   overflowY: "auto",
                 }}
               >
-                <main
-                  style={{
-                    padding: 24,
-                    textAlign: "center",
-                    background: colorBgContainer,
-                    borderRadius: borderRadiusLG,
-                  }}
-                >
-                  <div>
-                    <Button onClick={currentUser}>currentUser</Button>
-                  </div>
-                  {children}
-                </main>
+               {children}
               </Content>
             </Layout>
           </Layout>

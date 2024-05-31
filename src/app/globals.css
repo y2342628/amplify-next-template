@@ -7,7 +7,7 @@
    
   --root-white:#fff;
 
-  --color-primary: #038fdd;
+  --custom-color-primary: #038fdd;
 
   --sider-bg: #003366;
 }
@@ -22,8 +22,10 @@ body {
   color: rgb(var(--font-color));
   min-height: 100vh;
   background-color: var(--root-bg);
-  
+}
 
+h1,h2,h3,h4,h5,p{
+  margin: 0;
 }
 div[data-amplify-authenticator]{
   margin-top: 20vh; 
@@ -31,7 +33,7 @@ div[data-amplify-authenticator]{
 
 
 .ant-layout-sider-dark {
-  color: #038fdd;
+  color: var(--custom-color-primary)
 }
 
 .custom-menu.ant-menu-dark .ant-menu-submenu-open > .ant-menu-submenu-title{
@@ -42,3 +44,32 @@ div[data-amplify-authenticator]{
   cursor: pointer;
 }
 
+
+.box-shadow{
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.03);
+}
+
+.site-button-ghost-wrapper{
+  padding: 16px;
+  background: rgb(190, 200, 200);
+}
+
+.ant-layout-sider-collapsed .user-name{
+  display: none;
+}
+
+.ant-layout-sider-collapsed .notification{
+  display: none;
+}
+
+
+.ant-layout-sider-collapsed .logo-wrap{
+  display: none;
+}
+.notification-wrap{ 
+  padding: 30px 10px 10px;
+  transition: all .3s linear;
+}
+.ant-layout-sider-collapsed .notification-wrap{
+  padding-left: 0;
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import {useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -15,131 +15,185 @@ import {
   GroupOutlined,
   FundProjectionScreenOutlined,
   TableOutlined,
-  BarChartOutlined
+  BarChartOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import {  Menu } from "antd";
-
+import { Menu } from "antd";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
-
-
-
 export default function customNav() {
-  const [items,setItems] =useState<MenuItem[]>();
+  const [items, setItems] = useState<MenuItem[]>();
 
-  useEffect(()=>{
+  const [defaultSelectedKeys, setDefaultSelectedKeys] = useState<string[]>();
+  const [defaultOpenKeys, setDefaultOpenKeys] = useState<string[]>();
 
+  const pathname = usePathname();
+
+  useEffect(() => {
     const fontStyles = {
-      fontSize:20
-    }
-  
+      fontSize: 20,
+    };
 
     const items: MenuItem[] = [
       {
-        key: "1",
+        key: "main",
         label: "Main",
         type: "group",
         children: [
           {
-            key: "1-1",
-            icon: <DashboardOutlined style={fontStyles}/>,
+            key: "dashboard",
+            icon: <DashboardOutlined style={fontStyles} />,
             label: "Dashboard",
             children: [
-              { key: "1-1-1", icon: <ApiOutlined style={fontStyles}/>, label: <Link href="/crypto">Crypto</Link> },
+              {
+                key: "crypto",
+                icon: <ApiOutlined style={fontStyles} />,
+                label: <Link href="/dashboard/crypto">Crypto</Link>,
+              },
             ],
           },
-          { key: "1-2", icon: <CreditCardOutlined style={fontStyles}/>, label: <Link href="/layout">Layout</Link>},
+          {
+            key: "layout",
+            icon: <CreditCardOutlined style={fontStyles} />,
+            label: <Link href="/layout">Layout</Link>,
+          },
         ],
       },
       {
-        key: "2",
+        key: "in-built",
         label: "In-built Apps",
         type: "group",
         children: [
-          { key: "2-1", icon: <CheckSquareOutlined style={fontStyles}/>, label: <Link href="/todo">Todo App</Link>},
-          { key: "2-2", icon: <ContactsOutlined style={fontStyles}/>, label: <Link href="/contacts">Contacts App</Link>},
+          {
+            key: "todo",
+            icon: <CheckSquareOutlined style={fontStyles} />,
+            label: <Link href="/todo">Todo App</Link>,
+          },
+          {
+            key: "contacts",
+            icon: <ContactsOutlined style={fontStyles} />,
+            label: <Link href="/contacts">Contacts App</Link>,
+          },
         ],
       },
       {
-        key: "3",
+        key: "components",
         label: "Components",
         type: "group",
         children: [
           {
-            key: "3-1",
-            icon: <UnorderedListOutlined style={fontStyles}/>,
+            key: "general",
+            icon: <UnorderedListOutlined style={fontStyles} />,
             label: "General",
             children: [
-              { key: "3-1-1",  label: <Link href="/button">Button</Link> },
-              { key: "3-1-2",  label: <Link href="/icon">Icon</Link> }
+              {
+                key: "button",
+                label: <Link href="/general/button">Button</Link>,
+              },
+              { key: "icon", label: <Link href="/general/icon">Icon</Link> },
             ],
           },
           {
-            key: "3-2",
-            icon: <CompassOutlined style={fontStyles}/>,
+            key: "navigation",
+            icon: <CompassOutlined style={fontStyles} />,
             label: "Navigation",
             children: [
-              { key: "3-2-1",  label: <Link href="/pagination">Pagination</Link> }
+              {
+                key: "pagination",
+                label: <Link href="/navigation/pagination">Pagination</Link>,
+              },
             ],
           },
           {
-            key: "3-3",
-            icon: <GroupOutlined style={fontStyles}/>,
+            key: "data-entry",
+            icon: <GroupOutlined style={fontStyles} />,
             label: "Data Entry",
             children: [
-              { key: "3-3-1",label: <Link href="/checkbox">Checkbox</Link> },
-              { key: "3-3-2",  label: <Link href="/datepicker">Datepicker</Link> },
-              { key: "3-3-3",  label: <Link href="/form">Form</Link> },
+              {
+                key: "checkbox",
+                label: <Link href="/data-entry/checkbox">Checkbox</Link>,
+              },
+              {
+                key: "datepicker",
+                label: <Link href="/data-entry/datepicker">Datepicker</Link>,
+              },
+              { key: "form", label: <Link href="/data-entry/form">Form</Link> },
             ],
           },
           {
-            key: "3-4",
-            icon: <FundProjectionScreenOutlined style={fontStyles}/>,
+            key: "data-display",
+            icon: <FundProjectionScreenOutlined style={fontStyles} />,
             label: "Data Display",
             children: [
-              { key: "3-4-1",  label: <Link href="/avatar">Avatar</Link> },
-              { key: "3-4-2", label: <Link href="/carousel">Carousel</Link> },
-              { key: "3-4-3", label: <Link href="/calender">Calender</Link> },
+              {
+                key: "avatar",
+                label: <Link href="/data-display/avatar">Avatar</Link>,
+              },
+              {
+                key: "carousel",
+                label: <Link href="/data-display/carousel">Carousel</Link>,
+              },
+              {
+                key: "calender",
+                label: <Link href="/data-display/calender">Calender</Link>,
+              },
             ],
           },
           {
-            key: "3-5",
-            icon: <TableOutlined style={fontStyles}/>,
+            key: "table",
+            icon: <TableOutlined style={fontStyles} />,
             label: "Table",
             children: [
-              { key: "3-5-1",  label: <Link href="/baseTable">Base Table</Link> },
-              { key: "3-5-2",  label: <Link href="/dataTable">Data Table</Link> }
+              {
+                key: "base-table",
+                label: <Link href="/table/base-table">Base Table</Link>,
+              },
+              {
+                key: "data-table",
+                label: <Link href="/table/data-table">Data Table</Link>,
+              },
             ],
           },
         ],
-        
       },
       {
-        key: "4",
+        key: "extensions",
         label: "Extensions",
         type: "group",
         children: [
           {
-            key: "4-1",
-            icon:<BarChartOutlined style={fontStyles}/>,
+            key: "chart",
+            icon: <BarChartOutlined style={fontStyles} />,
             label: "Chart",
             children: [
-              { key: "4-1-1", label: <Link href="/rechart">Rechart</Link> }
-            ]
-          }]}
-      
+              {
+                key: "re-chart",
+                label: <Link href="/chart/rechart">Rechart</Link>,
+              },
+            ],
+          },
+        ],
+      },
     ];
-    setItems(items)
-  },[])
+    setItems(items);
+  }, []);
 
+  useEffect(() => {
+    if (!pathname) return;
+    const path = pathname.split("/").filter((i) => i);
+    const selectedKey = path.pop();
+    if (selectedKey) setDefaultSelectedKeys([selectedKey]);
+    if (path.length) setDefaultOpenKeys(path);
+  }, []);
+
+  if (!defaultSelectedKeys) return null;
 
   return (
     <Menu
       className="custom-menu"
-      defaultSelectedKeys={["1"]}
-      defaultOpenKeys={["sub1"]}
+      defaultSelectedKeys={defaultSelectedKeys}
+      defaultOpenKeys={defaultOpenKeys}
       mode="inline"
       theme="dark"
       items={items}

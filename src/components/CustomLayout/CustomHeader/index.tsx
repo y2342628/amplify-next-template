@@ -9,7 +9,7 @@ const { Header } = Layout;
 
 export default function CustomHeader() {
   const {
-    token: { colorBgContainer },
+    token: { colorBgContainer ,boxShadowSecondary,boxShadowTertiary},
   } = theme.useToken();
 
   const [languageCode, setLanguageCode] = useState<string>("US");
@@ -154,6 +154,7 @@ export default function CustomHeader() {
         background: colorBgContainer,
         boxShadow: "0 0 4px 4px rgba(0, 0, 0, 0.08)",
         height: 72,
+        zIndex:100
       }}
     >
       <Row

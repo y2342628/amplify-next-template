@@ -1,12 +1,7 @@
 "use client";
 
 
-
-import Loading from "@/components/Loading";
-
-
-import { Button, message, Row,Col,Form } from 'antd';
-
+import TOBEDONE from "@/components/TOBEDONE";
 
 
 export default function Page() {
@@ -16,8 +11,7 @@ export default function Page() {
 
   return (
     <div className="py-4">
-      <h2 className="text-center">layout</h2>
-      
+     <TOBEDONE />
     </div>
   );
 }

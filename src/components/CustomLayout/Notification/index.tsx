@@ -1,4 +1,4 @@
-import {  Row, Col, Avatar, Dropdown, Space } from "antd";
+import {  Row, Col, Avatar, Dropdown, Space, message } from "antd";
 import {
   DownOutlined,
   SearchOutlined,
@@ -6,6 +6,7 @@ import {
   MessageOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
+
 
 export default function Notification({
     signOut,
@@ -30,10 +31,20 @@ export default function Notification({
     },
   ];
 
+
+  const onClick: MenuProps["onClick"] = ({ key }) => {
+    console.log(key)
+    if(key==="3"){
+      signOut?.();
+      return;
+    }
+    message.info("TBD")
+  };
+
   return (
     <div
+    className="notification-wrap"
       style={{
-        padding: "30px 10px 10px",
         margin: "0 20px 10px",
         borderBottom: "solid 1px #e8e8e8",
         borderBottomColor: "#038fdd",
@@ -42,7 +53,7 @@ export default function Notification({
       <Row
         align="middle"
         style={{
-          marginBottom: "1.5rem",
+          marginBottom: "1.5rem"
         }}
       >
         <Col
@@ -52,9 +63,9 @@ export default function Notification({
         >
           <Avatar size="large" src="/user-logo.png" />
         </Col>
-        <Col>
+        <Col className="user-name">
           <Dropdown
-            menu={{ items }}
+            menu={{ items ,onClick}}
             trigger={["click"]}
             placement="bottomRight"
             arrow={true}
@@ -75,7 +86,7 @@ export default function Notification({
           </Dropdown>
         </Col>
       </Row>
-      <Row>
+      <Row className="notification">
         <Col span={6}>
           <SearchOutlined style={{
             fontSize:20
